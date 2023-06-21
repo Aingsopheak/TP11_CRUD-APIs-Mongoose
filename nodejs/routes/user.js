@@ -12,23 +12,28 @@ router.get('/:id', auth.ensureSignedIn, async function (req, res, next) {
 })
 
 // all users
-router.get('/all', auth.ensureSignedIn, (req, res) => {
+router.get('/all', auth.ensureSignedIn, async (req, res) => {
   // to do
+  const result = await userService.findAll();
+  res.json(result);
 })
 
 router.post('/update-password', auth.ensureSignedIn, auth.currentUser, async (req, res, next) => {
   // to do
-  res.json({});
+  const result = await userService.updatePass(req, res);
+  res.json(result);
 })
 
 router.post('/update', auth.ensureSignedIn, async (req, res, next) => {
   // to do
-  res.json({});
+  result = await userService.update(req, res);
+  res.json(result);
 })
 
 router.post('/delete', auth.ensureSignedIn, async (req, res, next) => {
   // to do
-  res.json({});
+  result = await userService.remove(req, res);
+  res.json(result);
 })
 
 module.exports = router

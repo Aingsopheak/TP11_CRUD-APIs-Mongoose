@@ -7,7 +7,8 @@ const categoryService = require('../services/category');
 
 router.get('/id/:id', auth.ensureSignedIn, async function (req, res) {
   const { id } = req.params;
-  res.json("tests");
+  const result = await categoryService.findById(id);
+  res.json(result);
 })
 
 // Categorized items
@@ -23,19 +24,22 @@ router.post('/create', auth.ensureSignedIn, async (req, res, next) => {
 })
 
 // all categories
-router.get('/all', (req, res) => {
+router.get('/all', async (req, res) => {
   // to do
-  res.json({});
+  const result = await categoryService.findCategorizedItems()
+  res.json(result);
 })
 
 router.post('/update', auth.ensureSignedIn, async (req, res, next) => {
   // to do
-  res.json({});
+  const result = await categoryService.update(req,res);
+  res.json(result);
 })
 
 router.post('/delete', auth.ensureSignedIn, async (req, res, next) => {
   // to do
-  res.json({});
+  const result = await categoryService.remove(req, res);
+  res.json(result);
 })
 
 module.exports = router

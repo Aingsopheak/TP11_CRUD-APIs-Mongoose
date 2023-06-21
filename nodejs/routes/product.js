@@ -34,11 +34,13 @@ router.post('/create', auth.ensureSignedIn, async (req, res,) => {
 
 router.post('/update', auth.ensureSignedIn, async (req, res, next) => {
   // to do
+  const result = await productService.update(req,res);
   res.json({});
 })
 
 router.post('/delete', auth.ensureSignedIn, async (req, res, next) => {
   // to do
+  const result = await productService.remove(res,req);
   res.json({});
 })
 

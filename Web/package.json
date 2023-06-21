@@ -19,6 +19,7 @@
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
+    "@vue/runtime-dom": "latest",
     "@vitejs/plugin-vue": "^2.2.2",
     "vite": "^2.8.4"
   }

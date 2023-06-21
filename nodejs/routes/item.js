@@ -19,18 +19,22 @@ router.post('/create', auth.ensureSignedIn, async (req, res, next) => {
 
 
 // all itens
-router.get('/all', (req, res) => {
+router.get('/all', async (req, res) => {
   // to do
+  const result = await itemService.findAll();
+  res.json(result);
 })
 
 router.post('/update', auth.ensureSignedIn, async (req, res, next) => {
   // to do
-  res.json({});
+  const result = await itemService.update(req,res);
+  res.json(result);
 })
 
 router.post('/delete', auth.ensureSignedIn, async (req, res, next) => {
   // to do
-  res.json({});
+  const result = await itemService.remove(res,req);
+  res.json(result);
 })
 
 module.exports = router
